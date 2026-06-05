@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+/* ══════════════════════════════════════════
+   MOODBOARD — Tales of Obojima
+   Deux variantes :
+   · .omd-wrap          — moodboard à onglets (personnage)
+   · .omd-lieu-wrap     — moodboard simple (lieu)
+   Préfixe : omd-*
+   ══════════════════════════════════════════ */
+
+
+/* ── VARIABLES PARTAGÉES ── */
+/* Héritées du thème forum via var(--bg) etc.
+   Fallbacks définis ici pour preview standalone */
+
+.omd-wrap,
+.omd-lieu-wrap {
+  --bg:       #f2ece6;
+  --neutral:  #e8ddd4;
+  --border:   #c8b8a8;
+  --accent:   #7a3820;
+  --accent-2: #c89040;
+  --accent-4: #fdf4e8;
+  --textColor:#2a1a10;
+  --muted:    #8a6050;
+  --radius:   10px;
+  --transparent: rgba(200,176,152,.12);
+}
+
+
+/* ══════════════════════════════════════════
+   MOODBOARD À ONGLETS — personnage
+   .omd-wrap
+   ══════════════════════════════════════════ */
+
+.omd-wrap {
+  font-family: 'Open Sans', sans-serif;
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg);
+  color: var(--textColor);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+
+/* ── EN-TÊTE ── */
+
+.omd-header {
+  padding: 20px 28px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.omd-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.omd-kicker {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .65;
+  display: block;
+}
+
+.omd-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--textColor);
+  opacity: .85;
+  line-height: 1.1;
+  letter-spacing: .3px;
+  display: block;
+}
+
+.omd-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+  display: block;
+  margin-top: 2px;
+  word-break: break-word;
+}
+
+/* Badge droit — statut du moodboard */
+.omd-header-badge {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: var(--neutral);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.omd-header-badge.open {
+  background: #526b5415;
+  border-color: #526b5440;
+  color: #3d5c3f;
+}
+
+.omd-header-badge.closed {
+  background: #8a504015;
+  border-color: #8a504040;
+  color: #6b3020;
+}
+
+
+/* ── BARRE D'ONGLETS ── */
+
+/* CSS-only tabs via radio inputs */
+.omd-tabs input[type="radio"] {
+  display: none;
+}
+
+.omd-nav {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--neutral);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.omd-nav label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 11px 16px;
+  cursor: pointer;
+  color: var(--textColor);
+  opacity: .4;
+  border-right: 1px solid var(--border);
+  transition: opacity .15s, background .15s;
+  user-select: none;
+  display: block;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.omd-nav label:last-of-type {
+  border-right: none;
+}
+
+.omd-nav label:hover {
+  opacity: .7;
+  background: var(--transparent);
+}
+
+/* Onglet actif — 6 onglets max */
+#omd-tab-0:checked ~ .omd-nav label[for="omd-tab-0"],
+#omd-tab-1:checked ~ .omd-nav label[for="omd-tab-1"],
+#omd-tab-2:checked ~ .omd-nav label[for="omd-tab-2"],
+#omd-tab-3:checked ~ .omd-nav label[for="omd-tab-3"],
+#omd-tab-4:checked ~ .omd-nav label[for="omd-tab-4"],
+#omd-tab-5:checked ~ .omd-nav label[for="omd-tab-5"] {
+  opacity: 1;
+  background: var(--bg);
+  box-shadow: inset 0 -2px 0 var(--accent);
+  position: relative;
+  z-index: 1;
+}
+
+/* Panneaux masqués par défaut */
+.omd-panel {
+  display: none;
+}
+
+#omd-tab-0:checked ~ .omd-panel-0,
+#omd-tab-1:checked ~ .omd-panel-1,
+#omd-tab-2:checked ~ .omd-panel-2,
+#omd-tab-3:checked ~ .omd-panel-3,
+#omd-tab-4:checked ~ .omd-panel-4,
+#omd-tab-5:checked ~ .omd-panel-5 {
+  display: block;
+}
+
+
+/* ── PANNEAU MOODBOARD ── */
+
+.omd-panel-body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Note/intro optionnelle en haut du panneau */
+.omd-panel-note {
+  background: var(--neutral);
+  border-left: 3px solid var(--accent-2);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+}
+
+.omd-panel-note-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+  word-break: break-word;
+}
+
+
+/* ── GRILLE MASONRY ── */
+
+.omd-grid {
+  columns: 3 160px;
+  column-gap: 7px;
+}
+
+.omd-card {
+  break-inside: avoid;
+  margin-bottom: 7px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--neutral);
+  position: relative;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.omd-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(42, 26, 16, .12);
+}
+
+/* Image */
+.omd-card-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.omd-card:hover .omd-card-img {
+  transform: scale(1.03);
+}
+
+/* Overlay doux au survol */
+.omd-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(42, 26, 16, .18) 100%);
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.omd-card:hover::after {
+  opacity: 1;
+}
+
+/* Légende optionnelle */
+.omd-card-caption {
+  padding: 7px 10px 9px;
+  border-top: 1px solid var(--border);
+}
+
+.omd-card-caption-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Badge flottant sur l'image */
+.omd-card-tag {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(242, 236, 230, .88);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+
+/* ── FOOTER ── */
+
+.omd-footer {
+  border-top: 1px solid var(--border);
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.omd-footer-sig {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: .3;
+}
+
+.omd-footer-mot {
+  font-family: 'EB Garamond', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--muted);
+  opacity: .55;
+  text-align: right;
+  max-width: 55%;
+  word-break: break-word;
+}
+
+
+/* ══════════════════════════════════════════
+   MOODBOARD SIMPLE — lieu
+   .omd-lieu-wrap
+   ══════════════════════════════════════════ */
+
+.omd-lieu-wrap {
+  font-family: 'Open Sans', sans-serif;
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg);
+  color: var(--textColor);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+
+/* ── EN-TÊTE LIEU ── */
+
+.omd-lieu-header {
+  padding: 22px 28px 18px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+/* Trait accent gauche */
+.omd-lieu-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+}
+
+.omd-lieu-kicker {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .65;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.omd-lieu-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--textColor);
+  opacity: .85;
+  display: block;
+  letter-spacing: .5px;
+  line-height: 1.1;
+}
+
+.omd-lieu-subtitle {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  display: block;
+  margin-top: 4px;
+}
+
+/* Métadonnées du lieu — pills */
+.omd-lieu-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.omd-lieu-pill {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--transparent);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+
+/* ── DESCRIPTION COURTE ── */
+
+.omd-lieu-desc {
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.omd-lieu-desc-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Ambiance / mot clé mis en relief */
+.omd-lieu-desc-text em,
+.omd-lieu-desc-text i {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--textColor);
+  opacity: .75;
+  font-weight: 400;
+}
+
+
+/* ── CORPS LIEU ── */
+
+.omd-lieu-body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Titre de section (optionnel) */
+.omd-lieu-section {
+  font-family: 'EB Garamond', serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.omd-lieu-section::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+
+/* ── GRILLE MASONRY LIEU ── */
+/* Identique à .omd-grid mais autonome */
+
+.omd-lieu-grid {
+  columns: 3 160px;
+  column-gap: 7px;
+}
+
+.omd-lieu-card {
+  break-inside: avoid;
+  margin-bottom: 7px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--neutral);
+  position: relative;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.omd-lieu-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(42, 26, 16, .12);
+}
+
+.omd-lieu-card-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.omd-lieu-card:hover .omd-lieu-card-img {
+  transform: scale(1.03);
+}
+
+.omd-lieu-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(42, 26, 16, .18) 100%);
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.omd-lieu-card:hover::after {
+  opacity: 1;
+}
+
+.omd-lieu-card-caption {
+  padding: 7px 10px 9px;
+  border-top: 1px solid var(--border);
+}
+
+.omd-lieu-card-caption-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  word-break: break-word;
+}
+
+.omd-lieu-card-tag {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(242, 236, 230, .88);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+/* Carte "image pleine largeur" — bannière d'ambiance */
+.omd-lieu-card.omd-lieu-card--banner {
+  columns: unset;
+  break-inside: avoid;
+}
+
+.omd-lieu-card--banner .omd-lieu-card-img {
+  max-height: 200px;
+  width: 100%;
+}
+
+
+/* ── FOOTER LIEU ── */
+
+.omd-lieu-footer {
+  border-top: 1px solid var(--border);
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.omd-lieu-footer-sig {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: .3;
+}
+
+.omd-lieu-footer-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.omd-lieu-tag {
+  font-family: 'Poppins', sans-serif;
+  font-size: 7px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--transparent);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+
+/* ══════════════════════════════════════════
+   UTILITAIRES PARTAGÉS
+   ══════════════════════════════════════════ */
+
+/* Divider décoratif */
+.omd-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.omd-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.omd-divider-icon {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.omd-divider-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-2);
+}
+
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+
+@media (max-width: 500px) {
+  .omd-grid,
+  .omd-lieu-grid {
+    columns: 2 120px;
+    column-gap: 6px;
+  }
+
+  .omd-header {
+    padding: 16px 18px 14px;
+  }
+
+  .omd-lieu-header {
+    padding: 18px 18px 14px;
+  }
+
+  .omd-panel-body,
+  .omd-lieu-body {
+    padding: 14px 14px 18px;
+  }
+
+  .omd-footer,
+  .omd-lieu-footer {
+    padding: 10px 18px;
+  }
+}
+
+@media (max-width: 340px) {
+  .omd-grid,
+  .omd-lieu-grid {
+    columns: 1;
+  }
+}

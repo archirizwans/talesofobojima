@@ -2,11 +2,9 @@
 
 /* ══════════════════════════════════════════
    MOODBOARD — Tales of Obojima
-   Modèle unifié : lieu & personnage
    Préfixe : omd-*
+   Système d'onglets : fc-* (standard forum)
    ══════════════════════════════════════════ */
-
-/* ── VARIABLES ── */
 
 .omd-wrap {
   --bg:      #f2ece6;
@@ -16,11 +14,6 @@
   --text:    #2a1a10;
   --muted:   #8a6050;
   --radius:  10px;
-}
-
-/* ── CONTENEUR ── */
-
-.omd-wrap {
   font-family: 'Open Sans', sans-serif;
   max-width: 680px;
   margin: 0 auto;
@@ -29,6 +22,12 @@
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
+}
+
+/* ── RADIO INPUTS ── */
+
+.omd-wrap input[type="radio"] {
+  display: none;
 }
 
 /* ── EN-TÊTE ── */
@@ -73,98 +72,12 @@
   word-break: break-word;
 }
 
-/* ── RADIO INPUTS — masqués globalement ── */
+/* ── BARRE D'ONGLETS — réutilise fc-nav ── */
+/* Les styles fc-nav et fc-panel sont déjà dans obojima-all.css.
+   On surcharge uniquement ce qui diffère pour le moodboard. */
 
-input[type="radio"] {
-  display: none;
-}
-
-/* ── BARRE D'ONGLETS ── */
-
-.omd-nav {
-  display: flex;
-  flex-wrap: wrap;
-  background: var(--neutral);
-  border-bottom: 1px solid var(--border);
-}
-
-.omd-nav label {
-  font-family: 'Poppins', sans-serif;
-  font-size: 8.5px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 10px 16px;
-  cursor: pointer;
-  color: var(--text);
-  opacity: .38;
-  border-right: 1px solid var(--border);
-  transition: opacity .15s;
-  user-select: none;
-  white-space: nowrap;
-  display: block;
-}
-
-.omd-nav label:last-of-type {
-  border-right: none;
-}
-
-.omd-nav label:hover {
-  opacity: .65;
-}
-
-/* ── ONGLET ACTIF — lieu ── */
-
-#omd-lieu-0:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-0"],
-#omd-lieu-1:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-1"],
-#omd-lieu-2:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-2"],
-#omd-lieu-3:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-3"],
-#omd-lieu-4:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-4"],
-#omd-lieu-5:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-5"] {
-  opacity: 1;
-  background: var(--bg);
-  box-shadow: inset 0 -2px 0 var(--accent);
-}
-
-/* ── ONGLET ACTIF — personnage ── */
-
-#omd-perso-0:checked ~ .omd-wrap .omd-nav label[for="omd-perso-0"],
-#omd-perso-1:checked ~ .omd-wrap .omd-nav label[for="omd-perso-1"],
-#omd-perso-2:checked ~ .omd-wrap .omd-nav label[for="omd-perso-2"],
-#omd-perso-3:checked ~ .omd-wrap .omd-nav label[for="omd-perso-3"],
-#omd-perso-4:checked ~ .omd-wrap .omd-nav label[for="omd-perso-4"],
-#omd-perso-5:checked ~ .omd-wrap .omd-nav label[for="omd-perso-5"] {
-  opacity: 1;
-  background: var(--bg);
-  box-shadow: inset 0 -2px 0 var(--accent);
-}
-
-/* ── PANNEAUX masqués par défaut ── */
-
-.omd-panel {
-  display: none;
-}
-
-/* ── PANNEAUX ACTIFS — lieu ── */
-
-#omd-lieu-0:checked ~ .omd-wrap .omd-panel-0,
-#omd-lieu-1:checked ~ .omd-wrap .omd-panel-1,
-#omd-lieu-2:checked ~ .omd-wrap .omd-panel-2,
-#omd-lieu-3:checked ~ .omd-wrap .omd-panel-3,
-#omd-lieu-4:checked ~ .omd-wrap .omd-panel-4,
-#omd-lieu-5:checked ~ .omd-wrap .omd-panel-5 {
-  display: block;
-}
-
-/* ── PANNEAUX ACTIFS — personnage ── */
-
-#omd-perso-0:checked ~ .omd-wrap .omd-panel-0,
-#omd-perso-1:checked ~ .omd-wrap .omd-panel-1,
-#omd-perso-2:checked ~ .omd-wrap .omd-panel-2,
-#omd-perso-3:checked ~ .omd-wrap .omd-panel-3,
-#omd-perso-4:checked ~ .omd-wrap .omd-panel-4,
-#omd-perso-5:checked ~ .omd-wrap .omd-panel-5 {
-  display: block;
+.omd-wrap .fc-nav {
+  margin-top: 0;
 }
 
 /* ── GRILLE MASONRY ── */
@@ -228,7 +141,7 @@ input[type="radio"] {
   text-transform: uppercase;
   padding: 2px 8px;
   border-radius: 3px;
-  background: rgba(200, 176, 152, .15);
+  background: rgba(200,176,152,.15);
   border: 1px solid var(--border);
   color: var(--muted);
 }

@@ -1,0 +1,43 @@
+/* ── factions guidebook — fc-* ── */
+.fc-wrap{font-family:'Open Sans',sans-serif;max-width:680px;margin:0 auto;background:var(--bg);color:var(--textColor);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
+.fc-header{padding:20px 32px 16px;border-bottom:1px solid var(--border)}
+.fc-kicker{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);opacity:.65;display:block;margin-bottom:4px}
+.fc-title{font-family:'EB Garamond',serif;font-size:22px;font-weight:400;color:var(--textColor);opacity:.85;display:block;letter-spacing:.5px}
+.fc-desc{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;color:var(--muted);margin-top:5px;line-height:1.6}
+.fc-nav{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--neutral)}
+.fc-nav-tab{font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:1px;padding:11px 14px;cursor:pointer;color:var(--textColor);opacity:.4;border-right:1px solid var(--border);transition:opacity .15s,background .15s;user-select:none;display:block;white-space:nowrap}
+.fc-nav-tab:last-child{border-right:none}
+.fc-nav-tab:hover{opacity:.7;background:var(--transparent)}
+.fc-nav-tab.active{opacity:1;background:var(--bg);box-shadow:inset 0 -2px 0 var(--accent);position:relative;z-index:1}
+.fc-panel{display:none}
+.fc-panel.active{display:block}
+.fc-body{padding:22px 32px;display:flex;flex-direction:column;gap:18px}
+.fc-faction-header{display:flex;align-items:center;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.fc-faction-icon{width:44px;height:44px;border-radius:50%;background:#526b5422;border:1px solid #526b5440;display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:18px;color:var(--accent);flex-shrink:0}
+.fc-faction-name{font-family:'EB Garamond',serif;font-size:19px;font-weight:400;color:var(--textColor);opacity:.85;display:block;letter-spacing:.5px;line-height:1}
+.fc-faction-nature{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);opacity:.6;margin-top:4px;display:block}
+.fc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.fc-tag{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:.6px;text-transform:uppercase;padding:2px 8px;border-radius:3px;background:var(--transparent);border:1px solid var(--border);color:var(--muted)}
+.fc-tag-green{background:#526b5415;border-color:#526b5440;color:#3d5c3f}
+.fc-section{font-family:'EB Garamond',serif;font-size:11px;font-style:italic;letter-spacing:1.5px;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.fc-section::after{content:'';flex:1;height:1px;background:var(--border)}
+.fc-prose{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;color:var(--muted);line-height:1.8;margin:0;word-break:break-word}
+.fc-prose+.fc-prose{margin-top:8px}
+.fc-note{background:var(--neutral);border-left:3px solid var(--accent-2);border-radius:0 6px 6px 0;padding:10px 14px;margin:10px;}
+.fc-note p{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;font-style:italic;color:var(--muted);line-height:1.65;margin:0}
+.fc-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fc-cell{background:var(--neutral);border-radius:6px;padding:10px 13px}
+.fc-cell-label{font-family:'EB Garamond',serif;font-size:15px;font-style:italic;color:var(--accent);display:block;margin-bottom:3px}
+.fc-cell-value{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;color:var(--muted);line-height:1.5;word-break:break-word}
+.fc-pnjs{display:flex;flex-direction:column;gap:7px}
+.fc-pnj{background:var(--neutral);border-radius:6px;overflow:hidden}
+.fc-pnj-inner{display:grid;grid-template-columns:3px 1fr}
+.fc-pnj-acc{background:var(--accent)}
+.fc-pnj-content{padding:9px 13px}
+.fc-pnj-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:2px}
+.fc-pnj-name{font-family:'EB Garamond',serif;font-size:14px;font-style:italic;color:var(--textColor);opacity:.85}
+.fc-pnj-role{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);opacity:.55}
+.fc-pnj-desc{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:300;color:var(--muted);line-height:1.6}
+.fc-footer{border-top:1px solid var(--border);padding:10px 32px;display:flex;justify-content:space-between;align-items:center}
+.fc-footer-sig{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:.3}
+.fc-badge{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:.8px;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:#526b5418;color:#3d5c3f;border:1px solid #526b5433}

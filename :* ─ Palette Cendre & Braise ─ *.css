@@ -1,0 +1,24 @@
+/* ─ Palette Cendre & Braise ─ */
+.mb-wrap{--bg:#f2ece6;--neutral:#e8ddd4;--border:#c8b8a8;--accent:#7a3820;--accent-2:#c89040;--accent-4:#fdf4e8;--textColor:#2a1a10;--muted:#8a6050;--radius:10px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.mb-wrap{font-family:'Open Sans',sans-serif;background:linear-gradient(160deg,#f8ede0 0%,#f2e8dc 35%,#e8d8c4 70%,#ddc8b0 100%);color:var(--textColor);padding:28px 20px 40px;border-radius:var(--radius)}
+.mb-header{margin-bottom:16px}
+.mb-kicker{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);opacity:.65;display:block;margin-bottom:5px}
+.mb-title{font-family:'EB Garamond',serif;font-size:28px;font-weight:400;font-style:italic;color:var(--textColor);opacity:.85;line-height:1}
+.mb-subtitle{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:300;color:var(--muted);margin-top:5px;display:block}
+.mb-cats{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px}
+.mb-cat{font-family:'Poppins',sans-serif;font-size:8px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 11px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap}
+.mb-cat:hover{border-color:var(--accent);color:var(--accent)}
+.mb-cat.active{background:var(--accent);border-color:var(--accent);color:var(--accent-4)}
+.mb-masonry{columns:4 180px;column-gap:8px}
+.mb-card{break-inside:avoid;margin-bottom:8px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:var(--neutral);position:relative;transition:transform .2s,box-shadow .2s}
+.mb-card.hidden{display:none}
+.mb-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(42,26,16,.13)}
+.mb-img-wrap{width:100%;overflow:hidden}
+.mb-img-wrap img{width:100%;display:block;object-fit:cover;transition:transform .3s ease}
+.mb-card:hover .mb-img-wrap img{transform:scale(1.03)}
+.mb-card-cat{position:absolute;top:7px;left:7px;font-family:'Poppins',sans-serif;font-size:7px;font-weight:500;letter-spacing:.7px;text-transform:uppercase;padding:2px 7px;border-radius:3px;background:rgba(242,236,230,.88);border:1px solid var(--border);color:var(--muted);backdrop-filter:blur(4px)}
+.mb-card-body{padding:9px 11px 11px}
+.mb-card-title{font-family:'EB Garamond',serif;font-size:14px;font-style:italic;color:var(--textColor);opacity:.85;display:block;line-height:1.2}
+.mb-card-note{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:300;color:var(--muted);line-height:1.6;margin-top:3px}
+.mb-footer-sig{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:.3;display:block;margin-top:16px}

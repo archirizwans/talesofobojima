@@ -1,0 +1,431 @@
+/* ================================================================== */
+/*  LISTE DES SUJETS — TOPICSLIST ROW                                  */
+/*  Forum Tales of Obojima                                             */
+/*  Font Awesome 6 Free requis                                         */
+/* ================================================================== */
+
+
+/* ================================================================== */
+/*  KEYFRAMES                                                          */
+/* ================================================================== */
+
+@keyframes obo-topic-halo {
+    0%,100% { transform: translate(-50%,-50%) scale(1);   opacity: .5;  }
+    50%     { transform: translate(-50%,-50%) scale(1.2); opacity: .18; }
+}
+
+
+/* ================================================================== */
+/*  ROW CONTAINER                                                      */
+/*  Grille : col1=avatar | col2=infos | col3=stats | col4=goto        */
+/* ================================================================== */
+
+.topicslist_row {
+    position: relative !important;
+    background: var(--neutral) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    margin-bottom: 5px !important;
+    display: grid !important;
+    grid-template-columns: 46px minmax(0,1fr) 64px 32px !important;
+    grid-template-rows: auto !important;
+    column-gap: 12px !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    transition: background .12s, border-color .12s !important;
+}
+
+.topicslist_row:last-child { margin-bottom: 0 !important; }
+
+.topicslist_row:hover {
+    background: color-mix(in srgb, var(--neutral) 93%, var(--accent)) !important;
+    border-color: color-mix(in srgb, var(--border) 60%, var(--accent)) !important;
+}
+
+/* Trait gauche vert — nouveaux messages */
+.topicslist_row.post_new::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important; top: 0 !important; bottom: 0 !important;
+    width: 3px !important;
+    background: var(--accent) !important;
+    border-radius: 10px 0 0 10px !important;
+}
+
+
+/* ================================================================== */
+/*  ÉLÉMENTS MASQUÉS                                                   */
+/* ================================================================== */
+
+.topicslist-img,
+.topic_msgicon,
+.topicslist_row br,
+.tl-participate-trigger,
+.topic_separator { display: none !important; }
+
+
+/* ================================================================== */
+/*  AVATAR — col 1                                                     */
+/* ================================================================== */
+
+.topicslist-avatar-lastpost {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    position: relative !important;
+    width: 46px !important;
+    height: 46px !important;
+    display: grid !important;
+    place-items: center !important;
+    z-index: 2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.topicslist-avatar-lastpost img {
+    width: 42px !important;
+    height: 42px !important;
+    max-width: 42px !important;
+    object-fit: cover !important;
+    border-radius: 9px !important;
+    border: 1.5px solid var(--border) !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Halo animé — nouveaux messages */
+.post_new .topicslist-avatar-lastpost::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 50% !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 9px !important;
+    pointer-events: none !important;
+    background: color-mix(in srgb, var(--accent) 18%, transparent) !important;
+    box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 30%, transparent) !important;
+    animation: obo-topic-halo 2.6s ease-in-out infinite !important;
+    z-index: 1 !important;
+}
+
+.post_new .topicslist-avatar-lastpost img {
+    border-color: color-mix(in srgb, var(--accent-2) 70%, var(--border)) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .post_new .topicslist-avatar-lastpost::after { animation: none !important; }
+}
+
+
+/* ================================================================== */
+/*  INFOS — col 2                                                      */
+/*  Flex wrap : ligne 1 = badge+titre+new+pages / ligne 2 = méta      */
+/* ================================================================== */
+
+.topicslist_infos {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    align-content: center !important;
+    gap: 3px 6px !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ── Ligne 1 ── */
+
+.topic-type {
+    order: 1 !important;
+    flex-shrink: 0 !important;
+    font-size: 8.5px !important;
+    font-weight: 700 !important;
+    font-family: Poppins, sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: .55px !important;
+    color: var(--accent) !important;
+    background: color-mix(in srgb, var(--accent) 10%, transparent) !important;
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent) !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    line-height: 1.5 !important;
+    white-space: nowrap !important;
+}
+
+.topictitle {
+    order: 2 !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-family: Mulish, sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 12.5px !important;
+    text-transform: lowercase !important;
+    letter-spacing: .3px !important;
+    line-height: 1.3 !important;
+    color: inherit !important;
+    text-decoration: none !important;
+}
+.topictitle:hover         { color: var(--accent) !important; text-decoration: none !important; }
+.post_new .topictitle     { color: var(--accent) !important; }
+
+/* Badge new — masqué par défaut, visible si .post_new */
+.tl-new-badge {
+    order: 3 !important;
+    display: none !important;
+    flex-shrink: 0 !important;
+    font-size: 8px !important;
+    font-weight: 700 !important;
+    font-family: Poppins, sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: .5px !important;
+    color: var(--accent) !important;
+    background: color-mix(in srgb, var(--accent) 10%, transparent) !important;
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent) !important;
+    border-radius: 4px !important;
+    padding: 2px 5px !important;
+    line-height: 1.5 !important;
+}
+.post_new .tl-new-badge { display: inline-block !important; }
+
+/* Pagination */
+.topicslist-pagination {
+    order: 4 !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+}
+.topicslist-pagination a {
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    font-family: Poppins, sans-serif !important;
+    color: var(--text-muted, #888) !important;
+    background: color-mix(in srgb, var(--border) 40%, transparent) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 4px !important;
+    padding: 1px 5px !important;
+    line-height: 1.5 !important;
+    text-decoration: none !important;
+    opacity: .75 !important;
+    transition: opacity .1s !important;
+}
+.topicslist-pagination a:hover {
+    opacity: 1 !important;
+    color: var(--accent) !important;
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border)) !important;
+}
+
+/* ── Séparateur de ligne — force le passage à la ligne 2 ── */
+/* topic-author est le premier élément de la ligne 2 */
+/* On lui donne width:100% pour casser le flex        */
+
+.topic-author {
+    order: 6 !important;
+    width: 100% !important;        /* force retour à la ligne */
+    font-size: 10px !important;
+    font-weight: normal !important;
+    opacity: .65 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-top: 1px !important;
+}
+
+.tl-meta-sep {
+    order: 7 !important;
+    display: inline-block !important;
+    width: 2px !important;
+    height: 2px !important;
+    border-radius: 50% !important;
+    background: currentColor !important;
+    opacity: .4 !important;
+    flex-shrink: 0 !important;
+    align-self: center !important;
+    margin-top: 1px !important;
+}
+
+.tl-lastdate {
+    order: 8 !important;
+    font-size: 10px !important;
+    opacity: .65 !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    margin-top: 1px !important;
+}
+
+/* Indicateur "posté" — masqué par défaut */
+.tl-participated {
+    order: 9 !important;
+    display: none !important;
+    align-items: center !important;
+    gap: 3px !important;
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    font-family: Poppins, sans-serif !important;
+    color: var(--accent) !important;
+    opacity: .6 !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    margin-top: 1px !important;
+}
+/* Affiché si le forum a injecté une image dans .tl-participate-trigger */
+.topicslist_infos:has(.tl-participate-trigger img) .tl-participated {
+    display: inline-flex !important;
+}
+
+
+/* ================================================================== */
+/*  STATS — col 3                                                      */
+/* ================================================================== */
+
+.topicslist-stats {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    border-left: 1px solid var(--border) !important;
+    padding-left: 12px !important;
+    margin: 0 !important;
+}
+
+.tl-stat {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    font-size: 10px !important;
+    color: var(--text-muted, #888) !important;
+    opacity: .6 !important;
+    white-space: nowrap !important;
+}
+
+.tl-stat i { font-size: 10px !important; opacity: .8 !important; }
+
+
+/* ================================================================== */
+/*  GOTO DERNIER MESSAGE — col 4                                       */
+/*  LAST_POST_IMG = <a> natif stylé en bouton                          */
+/* ================================================================== */
+
+.topicslist-lastpost {
+    grid-column: 4 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.topicslist-lastpost span { display: contents !important; }
+
+/* Image native cachée, on injecte l'icône FA via ::after */
+.topicslist-lastpost a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 7px !important;
+    border: 1px solid var(--border) !important;
+    background: color-mix(in srgb, var(--border) 30%, transparent) !important;
+    color: var(--text-muted, #888) !important;
+    text-decoration: none !important;
+    opacity: .65 !important;
+    transition: opacity .12s, border-color .12s, color .12s !important;
+    flex-shrink: 0 !important;
+}
+.topicslist-lastpost a:hover {
+    opacity: 1 !important;
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--border)) !important;
+    color: var(--accent) !important;
+    background: color-mix(in srgb, var(--accent) 8%, transparent) !important;
+}
+.post_new .topicslist-lastpost a {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border)) !important;
+    color: var(--accent) !important;
+    opacity: .85 !important;
+}
+
+/* Cache l'image native du forum */
+.topicslist-lastpost a img { display: none !important; }
+
+/* Injecte l'icône FA à la place */
+.topicslist-lastpost a::after {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    content: "\f309" !important;
+    font-size: 11px !important;
+}
+
+
+/* ================================================================== */
+/*  DESCRIPTION — row 2, col 2-4 (si activée)                         */
+/* ================================================================== */
+
+.topicslist-description {
+    grid-column: 2 / 5 !important;
+    grid-row: 2 !important;
+    font-size: 10px !important;
+    opacity: .45 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    padding-top: 5px !important;
+    margin-top: 4px !important;
+    border-top: 1px solid var(--border) !important;
+    line-height: 1.3 !important;
+}
+
+
+/* ================================================================== */
+/*  RESPONSIVE                                                         */
+/* ================================================================== */
+
+@media (max-width: 768px) {
+    .topicslist_row {
+        grid-template-columns: 40px minmax(0,1fr) 28px !important;
+        padding: 9px 10px !important;
+    }
+    .topicslist-avatar-lastpost img {
+        width: 36px !important; height: 36px !important; max-width: 36px !important;
+    }
+    .post_new .topicslist-avatar-lastpost::after {
+        width: 36px !important; height: 36px !important;
+    }
+    .topicslist-stats { display: none !important; }
+    .topicslist-lastpost { grid-column: 3 !important; }
+    .topicslist-description { grid-column: 2 / 4 !important; }
+}
+
+@media (max-width: 480px) {
+    .topicslist_row {
+        grid-template-columns: 36px minmax(0,1fr) 28px !important;
+        padding: 8px 9px !important;
+    }
+    .topicslist-avatar-lastpost img {
+        width: 32px !important; height: 32px !important; max-width: 32px !important;
+        border-radius: 7px !important;
+    }
+    .post_new .topicslist-avatar-lastpost::after {
+        width: 32px !important; height: 32px !important;
+    }
+    .tl-new-badge,
+    .topicslist-pagination,
+    .tl-meta-sep,
+    .tl-participated { display: none !important; }
+}

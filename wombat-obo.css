@@ -1,0 +1,291 @@
+/* ══════════════════════════════════════════
+   WOMBAT (POPUP) — NE PAS TOUCHER
+   ══════════════════════════════════════════ */
+.wombat-overlay{position:fixed;inset:0;z-index:990;opacity:0;visibility:hidden;transition:.2s opacity ease;background:var(--neutral)}
+.wombat-overlay.open{opacity:.5;visibility:visible}
+.wombat-aside{position:fixed;inset:0;margin:auto;z-index:999;opacity:0;visibility:hidden;transition:.2s all ease;width:90%;max-width:800px;border-radius:10px;height:max-content;max-height:min(86vh,900px);overflow:auto;transform:translateX(-20%)}
+.wombat-aside.open{opacity:1;visibility:visible;transform:translateX(0)}
+
+/* ══════════════════════════════════════════
+   PROFIL PUBLIC — page + popup
+   ══════════════════════════════════════════ */
+#wombat *{box-sizing:border-box}
+
+/* titre de page */
+#wombat .page-title{
+  font-family:'EB Garamond',serif;
+  font-size:26px;
+  font-weight:400;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--textColor);
+  opacity:.82;
+  text-align:center;
+  margin:0 0 14px;
+}
+
+/* conteneur principal : 2 colonnes */
+#wombat .user_profile{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
+  min-height:480px;
+}
+
+/* ── COLONNE GAUCHE : avatar + mini-bloc ── */
+#wombat .profile_avatar{
+  border-right:1px solid var(--border);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  background:var(--neutral);
+  min-height:0;
+}
+
+/* avatar */
+#wombat #user_avatar img{
+  display:block;
+  width:100%!important;
+  max-width:100%!important;
+  aspect-ratio:3/4;
+  height:auto!important;
+  object-fit:cover;
+  object-position:center top;
+  border:1px solid var(--border);
+  border-radius:8px;
+  margin:0;
+}
+
+/* statut online/offline */
+#wombat .obo-status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  width:max-content;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:5px 10px;
+  font-family:'Poppins',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  background:var(--bg);
+  color:var(--muted);
+}
+#wombat .obo-status::before{
+  content:'';
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--border);
+  flex-shrink:0;
+}
+#wombat .obo-status.online::before{
+  background:var(--accent);
+  animation:oboPulse 2.2s ease-in-out infinite;
+}
+#wombat .obo-status.offline{opacity:.6}
+
+@keyframes oboPulse{
+  0%,100%{transform:scale(1);opacity:.9}
+  50%{transform:scale(1.25);opacity:.5}
+}
+
+/* mini-bloc champs résumé */
+#wombat .obo-mini{
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  background:var(--bg);
+  overflow:auto;
+  min-height:0;
+  flex:1;
+}
+#wombat .obo-mini .obo-line{
+  display:grid;
+  grid-template-columns:80px minmax(0,1fr);
+  gap:8px;
+  align-items:baseline;
+}
+#wombat .obo-mini .obo-k{
+  font-family:'EB Garamond',serif;
+  font-size:11px;
+  font-style:italic;
+  color:var(--accent);
+  opacity:.8;
+  line-height:1.4;
+}
+#wombat .obo-mini .obo-v{
+  font-family:'Open Sans',sans-serif;
+  font-size:11px;
+  font-weight:300;
+  color:var(--muted);
+  line-height:1.45;
+  min-width:0;
+  word-break:break-word;
+}
+
+/* ── COLONNE DROITE : onglets + champs ── */
+#wombat .profile_infos{
+  padding:0;
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr);
+}
+
+/* masquer les éléments natifs inutiles */
+#wombat .profile_infos>.profile_contact,
+#wombat .profile_infos>strong{display:none}
+
+/* barre d'onglets */
+#wombat .obo-tabs{
+  display:flex;
+  gap:0;
+  border-bottom:1px solid var(--border);
+  background:var(--neutral);
+  padding:0;
+  overflow-x:auto;
+}
+
+/* onglet individuel */
+#wombat .obo-tab{
+  font-family:'Poppins',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--textColor);
+  opacity:.4;
+  background:transparent;
+  border:none;
+  border-right:1px solid var(--border);
+  border-radius:0;
+  padding:11px 16px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:opacity .15s, background .15s;
+  width:auto;
+  height:auto;
+}
+#wombat .obo-tab:hover{opacity:.7;background:var(--bg)}
+#wombat .obo-tab[aria-selected=true]{
+  opacity:1;
+  background:var(--bg);
+  box-shadow:inset 0 -2px 0 var(--accent);
+  color:var(--textColor);
+  border-color:var(--border);
+}
+
+/* panneaux */
+#wombat .obo-panels{
+  position:relative;
+  min-height:0;
+  height:100%;
+  overflow:hidden;
+}
+#wombat .obo-panel{
+  position:absolute;
+  inset:0;
+  display:none;
+  overflow-y:auto;
+  padding:0;
+}
+#wombat .obo-panel.is-active{display:block}
+
+/* champs de profil dans les panneaux */
+#wombat .obo-panel .profile_field{
+  margin:0;
+  padding:10px 20px;
+  border-bottom:1px solid var(--border);
+  display:grid;
+  grid-template-columns:160px minmax(0,1fr);
+  gap:12px;
+  align-items:start;
+}
+#wombat .obo-panel .profile_field:last-child{border-bottom:none}
+
+#wombat .obo-panel .profile_field label,
+#wombat .obo-panel .profile_field label>span{
+  font-family:'EB Garamond',serif;
+  font-size:13px;
+  font-style:italic;
+  font-weight:400;
+  color:var(--muted)!important;
+  text-transform:none;
+  letter-spacing:0;
+  opacity:1;
+  margin:0;
+  padding-top:1px;
+}
+
+#wombat .obo-panel .profile_field field{
+  font-family:'Open Sans',sans-serif;
+  font-size:12px;
+  font-weight:300;
+  color:var(--textColor);
+  line-height:1.6;
+  min-width:0;
+  word-break:break-word;
+}
+
+/* awards */
+#wombat .obo-awards-field{grid-template-columns:1fr}
+.awards_block_simple_wrapper{padding:4px 0}
+.awards_block_simple{display:flex;flex-wrap:wrap;gap:6px}
+
+/* admin buttons */
+#wombat .profile_admin{
+  margin-top:12px;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  #wombat .user_profile{grid-template-columns:1fr;min-height:unset}
+  #wombat .profile_avatar{border-right:none;border-bottom:1px solid var(--border)}
+  #wombat .obo-panel .profile_field{grid-template-columns:1fr}
+  #wombat .obo-mini .obo-line{grid-template-columns:1fr}
+}
+
+/* ══════════════════════════════════════════
+   PREVIEW / TOOLTIPSTER
+   ══════════════════════════════════════════ */
+.tooltipster-arrow{display:none}
+.preview_content{display:flex;gap:10px;align-items:flex-start}
+.preview_avatar img{
+  object-fit:cover;
+  object-position:center top;
+  width:60px;
+  height:80px;
+  border-radius:6px;
+  border:1px solid var(--border);
+  flex-shrink:0;
+}
+.preview_infos{flex:1;min-width:0}
+.preview_pseudo,.preview_pseudo strong{
+  font-family:'EB Garamond',serif;
+  font-size:16px;
+  font-weight:400;
+  color:var(--textColor);
+  opacity:.85;
+}
+.preview_contacts{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top:4px;
+}
+.preview_contacts a{opacity:.5;transition:opacity .15s}
+.preview_contacts a:hover{opacity:1}

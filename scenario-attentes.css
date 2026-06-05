@@ -1,0 +1,161 @@
+/* ── FORMULAIRE D'ATTENTES SCÉNARIO — fm-scenario-* ── */
+/* À ajouter à obojima-all(2).css                       */
+
+.fm-head {
+  padding: 18px 28px 16px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.fm-head::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+}
+.fm-kicker {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .7;
+  display: block;
+  margin-bottom: 4px;
+}
+.fm-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--textColor);
+  opacity: .85;
+  display: block;
+}
+.fm-body {
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Grille 2 colonnes */
+.fm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Champ simple (demi-largeur) */
+.fm-field {
+  background: var(--neutral);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.fm-field::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: .4;
+}
+
+/* Champ pleine largeur */
+.fm-field-full {
+  background: var(--neutral);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.fm-field-full::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent-2);
+  opacity: .5;
+}
+
+/* Typographie des champs */
+.fm-label {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--muted);
+  display: block;
+}
+.fm-optional {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--muted);
+  opacity: .6;
+  font-style: italic;
+}
+.fm-input {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--textColor);
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 4px;
+  min-height: 18px;
+  word-break: break-word;
+}
+.fm-textarea {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.75;
+  min-height: 44px;
+  word-break: break-word;
+}
+
+/* Cases go/no-go */
+.fm-checks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 6px 10px;
+  padding-top: 2px;
+}
+.fm-check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.fm-check:last-child {
+  grid-column: 1 / -1;
+}
+.fm-check-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+/* Classe à ajouter pour cocher : */
+.fm-check-dot.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.fm-check-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.4;
+  word-break: break-word;
+}

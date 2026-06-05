@@ -1,0 +1,522 @@
+/* ══════════════════════════════════════════════════════
+   VIEWTOPIC — Tales of Obojima
+   Diff par rapport à l'original :
+   - Overlay hover supprimé (structure conservée mais invisible)
+   - Bloc .obo-post-subavatar ajouté sous l'avatar
+   - Harmonisation typographique avec la DA ob-* / oo-*
+   ══════════════════════════════════════════════════════ */
+
+/* ── STRUCTURE DU POST ── */
+
+.post_row {
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.obo-post-card {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 0;
+}
+
+/* ── COLONNE PROFIL ── */
+
+.post_profile {
+  padding: 0;
+  border-right: 1px solid var(--border);
+  background: var(--neutral);
+  width: 200px;
+}
+
+.obo-profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 0 0 14px;
+}
+
+/* ── AVATAR ── */
+
+.obo-author-avatar {
+  position: relative;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.obo-author-avatar img {
+  display: block;
+  width: 200px;
+  height: 320px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 0;
+}
+
+/* Overlay : structure conservée mais complètement invisible — plus de hover */
+.obo-avatar-overlay {
+  display: none;
+}
+
+/* ── DÉCOR ENTRE AVATAR ET SOUS-BLOC ── */
+
+.obo-author-name {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  color: var(--accent-2);
+  opacity: .35;
+  letter-spacing: 5px;
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding: 8px 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.obo-post-subavatar {
+  width: calc(100% - 24px);
+  margin: 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.obo-profile-tabs {
+  width: calc(100% - 24px);
+  margin: 0 12px;
+}
+
+/* Chaque champ dans le sous-avatar */
+.obo-post-subavatar .user_field {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.obo-post-subavatar .user_field:last-child {
+  border-bottom: none;
+}
+
+/* Label : invisible — on laisse juste la valeur */
+.obo-post-subavatar .field_label {
+  display: none;
+}
+
+.obo-post-subavatar .field_separator {
+  display: none;
+}
+
+/* Valeur : sobre, centrée */
+.obo-post-subavatar .field_content {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.4;
+  word-break: break-word;
+  text-transform: lowercase;
+}
+
+/* Champ pseudo : légèrement mis en valeur */
+.obo-post-subavatar .field-pseudo .field_content {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--textColor);
+  opacity: .8;
+}
+
+/* Champ messages : couleur accent très atténuée */
+.obo-post-subavatar .field-messages .field_content {
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .5;
+}
+
+/* Champ crédits */
+.obo-post-subavatar .field-credits .field_content {
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  letter-spacing: .5px;
+  color: var(--muted);
+  opacity: .6;
+}
+
+/* ── CHAMPS PROFIL CLASSIQUES (post_userinfo) ── */
+
+/* Le bloc parent est masqué — tout est redistribué par le script */
+.post_userinfo {
+  display: none;
+}
+
+/* ── ONGLETS SOUS-AVATAR ── */
+
+.obo-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.obo-tab {
+  border: 1px solid var(--border);
+  background: var(--neutral);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: .4;
+  color: var(--muted);
+  transition: opacity .2s, background .2s, border-color .2s;
+  padding: 0;
+}
+
+.obo-tab em { font-size: 13px; }
+
+.obo-tab:hover { opacity: .7; }
+
+.obo-tab.is-active {
+  opacity: 1;
+  background: var(--bg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.obo-tabs-panels {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  height: 148px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  box-sizing: border-box;
+}
+
+.obo-tab-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.obo-tab-panel.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Champs dans les onglets */
+.obo-tab-panel .user_field {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.obo-tab-panel .user_field:last-child { border-bottom: none; }
+
+.obo-tab-panel .field_label {
+  font-family: 'EB Garamond', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--accent);
+  opacity: .75;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.obo-tab-panel .field_content {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.obo-tab-panel .field_separator { display: none; }
+
+/* Awards dans onglet */
+#list_awards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.award {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  background-image: var(--award-image);
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+
+.award:hover .award_tooltiptext { display: block; }
+
+.award_tooltiptext {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 10px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* Contact */
+.post_contact {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  opacity: .45;
+}
+
+.post_contact:hover { opacity: .85; }
+
+/* ── COLONNE MESSAGE ── */
+
+.obo-post-main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barre de détails */
+.post_details {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.obo-post-meta-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.post_pseudo-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Badge en ligne */
+.obo-online-badge { display: none; }
+
+.obo-online-badge.online {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(82, 107, 84, 0.25);
+  background: rgba(82, 107, 84, 0.06);
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.obo-online-badge.online::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: obo-online-softpulse 2.2s ease-in-out infinite;
+}
+
+@keyframes obo-online-softpulse {
+  0%, 100% { transform: scale(1); opacity: .9; }
+  50% { transform: scale(1.3); opacity: .5; }
+}
+
+/* Date */
+.post_date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--muted);
+  opacity: .65;
+}
+
+.post_date::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--accent);
+  opacity: .4;
+  flex-shrink: 0;
+}
+
+.post_date a, time {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  text-transform: lowercase;
+}
+
+/* Boutons droite */
+.obo-post-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+ul.profile-icons {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.profile-icons li {
+  padding: 3px 6px;
+  border-radius: 5px;
+  opacity: .35;
+  transition: opacity .15s;
+}
+
+ul.profile-icons li:hover { opacity: .8; }
+
+.profile-icons a[href=""] { display: none; }
+
+/* Like */
+.like_button {
+  display: flex;
+  align-items: center;
+}
+
+.rep-button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 3px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: .55;
+  transition: opacity .15s, border-color .15s;
+}
+
+.rep-button:hover { opacity: 1; border-color: var(--accent-2); color: var(--accent-2); }
+
+/* Corps du message */
+.post_message { padding: 0; }
+
+.obo-post-content-inner {
+  padding: 18px 20px 20px;
+}
+
+.obo-post-bodytext {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--textColor);
+  word-break: break-word;
+}
+
+/* Signature */
+.signature_div {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  opacity: .55;
+}
+
+/* ── SYSTÈME PAGE-TAB (inchangé) ── */
+
+.page-tab {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.page-tab .post_profile,
+.page-tab .post_date,
+.page-tab .like_button,
+.page-tab .btn-quote,
+.page-tab li:has(.fa-mention),
+.page-tab .btn-ip { display: none; }
+
+.page-tab .post:has(button[onglet]) {
+  display: block;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+button[onglet] {
+  background: var(--neutral);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin-bottom: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 9px;
+  letter-spacing: .5px;
+  cursor: pointer;
+  color: var(--muted);
+  display: block;
+  width: 100%;
+  text-align: left;
+  transition: border-color .15s, color .15s;
+}
+
+button[onglet].active {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.page-tab .post:has(div[onglet]) {
+  grid-row: 1;
+  grid-column: 2;
+  display: none;
+}
+
+.page-tab .post:has(div[onglet]).active { display: block; }
+.page-tab.clear .post_details { display: none; }
+.post--0 { display: none; }

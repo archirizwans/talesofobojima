@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Poppins:wght@400;500&family=Open+Sans:ital,wght@0,300;1,300&display=swap');
-
 /* ══════════════════════════════════════════
    MOODBOARD — Tales of Obojima
    Préfixe : omd-*
@@ -18,7 +16,7 @@
   max-width: 680px;
   margin: 0 auto;
   background: var(--bg);
-  color: var(--text);
+  color: var(--textColor);
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -47,7 +45,7 @@
   font-family: 'EB Garamond', serif;
   font-size: 22px;
   font-style: italic;
-  color: var(--text);
+  color: var(--textColor);
   opacity: .85;
   display: block;
   line-height: 1.1;

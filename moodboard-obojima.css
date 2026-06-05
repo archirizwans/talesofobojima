@@ -6,20 +6,17 @@
    Préfixe : omd-*
    ══════════════════════════════════════════ */
 
-
-/* ── VARIABLES (fallbacks standalone) ── */
+/* ── VARIABLES ── */
 
 .omd-wrap {
-  --bg:       #f2ece6;
-  --neutral:  #e8ddd4;
-  --border:   #c8b8a8;
-  --accent:   #7a3820;
-  --accent-2: #c89040;
-  --text:     #2a1a10;
-  --muted:    #8a6050;
-  --radius:   10px;
+  --bg:      #f2ece6;
+  --neutral: #e8ddd4;
+  --border:  #c8b8a8;
+  --accent:  #7a3820;
+  --text:    #2a1a10;
+  --muted:   #8a6050;
+  --radius:  10px;
 }
-
 
 /* ── CONTENEUR ── */
 
@@ -33,7 +30,6 @@
   overflow: hidden;
   border: 1px solid var(--border);
 }
-
 
 /* ── EN-TÊTE ── */
 
@@ -77,12 +73,13 @@
   word-break: break-word;
 }
 
+/* ── RADIO INPUTS — masqués globalement ── */
 
-/* ── ONGLETS (CSS-only via radio inputs) ── */
-
-.omd-tabs input[type="radio"] {
+input[type="radio"] {
   display: none;
 }
+
+/* ── BARRE D'ONGLETS ── */
 
 .omd-nav {
   display: flex;
@@ -116,32 +113,59 @@
   opacity: .65;
 }
 
-/* Onglet actif — jusqu'à 6 onglets */
-#omd-0:checked ~ .omd-nav label[for="omd-0"],
-#omd-1:checked ~ .omd-nav label[for="omd-1"],
-#omd-2:checked ~ .omd-nav label[for="omd-2"],
-#omd-3:checked ~ .omd-nav label[for="omd-3"],
-#omd-4:checked ~ .omd-nav label[for="omd-4"],
-#omd-5:checked ~ .omd-nav label[for="omd-5"] {
+/* ── ONGLET ACTIF — lieu ── */
+
+#omd-lieu-0:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-0"],
+#omd-lieu-1:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-1"],
+#omd-lieu-2:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-2"],
+#omd-lieu-3:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-3"],
+#omd-lieu-4:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-4"],
+#omd-lieu-5:checked ~ .omd-wrap .omd-nav label[for="omd-lieu-5"] {
   opacity: 1;
   background: var(--bg);
   box-shadow: inset 0 -2px 0 var(--accent);
 }
 
-/* Panneaux masqués par défaut */
+/* ── ONGLET ACTIF — personnage ── */
+
+#omd-perso-0:checked ~ .omd-wrap .omd-nav label[for="omd-perso-0"],
+#omd-perso-1:checked ~ .omd-wrap .omd-nav label[for="omd-perso-1"],
+#omd-perso-2:checked ~ .omd-wrap .omd-nav label[for="omd-perso-2"],
+#omd-perso-3:checked ~ .omd-wrap .omd-nav label[for="omd-perso-3"],
+#omd-perso-4:checked ~ .omd-wrap .omd-nav label[for="omd-perso-4"],
+#omd-perso-5:checked ~ .omd-wrap .omd-nav label[for="omd-perso-5"] {
+  opacity: 1;
+  background: var(--bg);
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+/* ── PANNEAUX masqués par défaut ── */
+
 .omd-panel {
   display: none;
 }
 
-#omd-0:checked ~ .omd-panel-0,
-#omd-1:checked ~ .omd-panel-1,
-#omd-2:checked ~ .omd-panel-2,
-#omd-3:checked ~ .omd-panel-3,
-#omd-4:checked ~ .omd-panel-4,
-#omd-5:checked ~ .omd-panel-5 {
+/* ── PANNEAUX ACTIFS — lieu ── */
+
+#omd-lieu-0:checked ~ .omd-wrap .omd-panel-0,
+#omd-lieu-1:checked ~ .omd-wrap .omd-panel-1,
+#omd-lieu-2:checked ~ .omd-wrap .omd-panel-2,
+#omd-lieu-3:checked ~ .omd-wrap .omd-panel-3,
+#omd-lieu-4:checked ~ .omd-wrap .omd-panel-4,
+#omd-lieu-5:checked ~ .omd-wrap .omd-panel-5 {
   display: block;
 }
 
+/* ── PANNEAUX ACTIFS — personnage ── */
+
+#omd-perso-0:checked ~ .omd-wrap .omd-panel-0,
+#omd-perso-1:checked ~ .omd-wrap .omd-panel-1,
+#omd-perso-2:checked ~ .omd-wrap .omd-panel-2,
+#omd-perso-3:checked ~ .omd-wrap .omd-panel-3,
+#omd-perso-4:checked ~ .omd-wrap .omd-panel-4,
+#omd-perso-5:checked ~ .omd-wrap .omd-panel-5 {
+  display: block;
+}
 
 /* ── GRILLE MASONRY ── */
 
@@ -169,7 +193,6 @@
 .omd-img:hover img {
   transform: scale(1.04);
 }
-
 
 /* ── FOOTER ── */
 
@@ -210,23 +233,10 @@
   color: var(--muted);
 }
 
-
 /* ── RESPONSIVE ── */
 
 @media (max-width: 400px) {
-  .omd-grid {
-    columns: 2 110px;
-  }
-
-  .omd-header {
-    padding: 14px 16px 12px;
-  }
-
-  .omd-grid {
-    padding: 10px;
-  }
-
-  .omd-footer {
-    padding: 9px 16px;
-  }
+  .omd-grid { columns: 2 110px; padding: 10px; }
+  .omd-header { padding: 14px 16px 12px; }
+  .omd-footer { padding: 9px 16px; }
 }

@@ -3,7 +3,7 @@
 /* ══════════════════════════════════════════
    MOODBOARD — Tales of Obojima
    Préfixe : omd-*
-   Système d'onglets : fc-* (standard forum)
+   Onglets : système fc-* JS (factions-patch)
    ══════════════════════════════════════════ */
 
 .omd-wrap {
@@ -22,12 +22,6 @@
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
-}
-
-/* ── RADIO INPUTS ── */
-
-.omd-wrap input[type="radio"] {
-  display: none;
 }
 
 /* ── EN-TÊTE ── */
@@ -70,14 +64,6 @@
   padding-top: 10px;
   border-top: 1px solid var(--border);
   word-break: break-word;
-}
-
-/* ── BARRE D'ONGLETS — réutilise fc-nav ── */
-/* Les styles fc-nav et fc-panel sont déjà dans obojima-all.css.
-   On surcharge uniquement ce qui diffère pour le moodboard. */
-
-.omd-wrap .fc-nav {
-  margin-top: 0;
 }
 
 /* ── GRILLE MASONRY ── */

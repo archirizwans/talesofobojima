@@ -26,7 +26,7 @@
 .og-section-title{font-family:'EB Garamond',serif;font-size:12px;font-style:italic;letter-spacing:1.5px;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .ob-section-title::after,.og-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 /* keyword inline — partagé */
-.ob-kw,.og-kw{font-family:'Poppins',sans-serif;font-size:10px;font-weight:500;letter-spacing:.3px;text-transform:uppercase;color:var(--textColor);opacity:.65}
+.ob-kw,.og-kw{color: var(--accent);font-weight: 600;font-size: 11px;text-transform: uppercase;background: #7a38201a;padding: 2px 4px;border-radius: 5px;}
 /* pills arrondies */
 .ob-pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
 .ob-pill,.og-tag,.og-header-tags .og-tag{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:.7px;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--transparent);border:1px solid var(--border);color:var(--muted)}

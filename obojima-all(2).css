@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 
 /* ══════════════════════════════════════════
-   OBOJIMA BASE — commun à tous les templates
-   fiches · liens · admin · guidebook
+   CSS BASE OBOJIMO
+   fiches/liens/admin/guidebook
    ══════════════════════════════════════════ */
 
 /* wrap */
@@ -120,7 +120,7 @@
 .page-tab .post:has(div[onglet]).active .post_profile{display:none}
 .page-tab .post:has(div[onglet]).active .obo-post-main{width:100%}
 .ob-header-text{flex:1;min-width:0}
-/* ── DELTA : fiche de liens ── */
+/* fiche de liens */
 /* msg 1 — présentation interactive */
 .lk-header{padding:24px 32px 0;display:flex;align-items:center;gap:20px}
 .lk-stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden}
@@ -185,7 +185,7 @@
 .fm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .fm-field{background:var(--neutral);border-radius:6px;padding:10px 14px;display:flex;flex-direction:column;gap:5px}
 .fm-field-full{background:var(--neutral);border-radius:6px;padding:10px 14px;display:flex;flex-direction:column;gap:5px}
-.fm-label{font-family:'EB Garamond',serif;font-size:11px;font-style:italic;color:var(--accent);flex-shrink:0}
+.fm-label{font-family:'EB Garamond',serif;font-size:15px;font-style:italic;color:var(--accent);flex-shrink:0}
 .fm-optional{font-family:'Open Sans',sans-serif;font-size:10px;font-weight:300;font-style:normal;color:var(--muted);opacity:.6}
 .fm-input{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;color:var(--textColor);line-height:1.4;word-break:break-word;border-bottom:1px dashed var(--border);padding-bottom:4px}
 .fm-textarea{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;color:var(--muted);font-style:italic;line-height:1.75;word-break:break-word;min-height:48px}

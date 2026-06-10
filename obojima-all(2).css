@@ -100,8 +100,8 @@
 .og-divider-dot{width:4px;height:4px;border-radius:50%;background:var(--accent-2)}
 .og-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .og-meta-cell{background:var(--neutral);border-radius:6px;padding:10px 14px}
-.og-meta-label{font-family:'EB Garamond',serif;font-size:10px;font-style:italic;color:var(--accent);display:block;margin-bottom:4px}
-.og-meta-value{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:300;color:var(--muted);line-height:1.55;word-break:break-word}
+.og-meta-label{font-family:'EB Garamond',serif;font-size:15px;font-style:italic;color:var(--accent);display:block;margin-bottom:4px}
+.og-meta-value{font-family:'Open Sans',sans-serif;font-size:11px;font-weight:500;color:var(--muted);line-height:1.55;word-break:break-word}
 .og-pnj-list{display:flex;flex-direction:column;gap:8px}
 .og-pnj-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .og-pnj-card-inner{display:grid;grid-template-columns:56px 1fr}

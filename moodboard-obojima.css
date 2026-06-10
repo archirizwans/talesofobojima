@@ -137,3 +137,13 @@
   .omd-header { padding: 14px 16px 12px; }
   .omd-footer { padding: 9px 16px; }
 }
+
+obo-highlight
+{color: var(--accent);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--accent-2);
+  background: #7a38201a;
+  padding: 2px 4px;
+  border-radius: 5px;}

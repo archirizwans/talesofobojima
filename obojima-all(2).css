@@ -86,7 +86,7 @@
 .og-tag{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:.7px;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--transparent);border:1px solid var(--border);color:var(--muted)}
 .og-tag-green{background:#526b5415;border-color:#526b5440;color:#3d5c3f}
 .og-tag-gold{background:#c9a86a15;border-color:#c9a86a40;color:#7a5a2a}
-.og-section-title{font-family:'EB Garamond',serif;font-size:14px;font-weight:600;letter-spacing:1.5px;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.og-section-title{font-family:'EB Garamond',serif;font-size:14px;font-weight:400;letter-spacing:1.5px;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .og-section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .og-points{display:flex;flex-direction:column;gap:9px}
 .og-point{display:flex;gap:10px;align-items:start}

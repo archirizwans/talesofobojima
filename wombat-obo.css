@@ -216,7 +216,7 @@
 #wombat .obo-panel .profile_field label,
 #wombat .obo-panel .profile_field label>span{
   font-family:'EB Garamond',serif;
-  font-size:13px;
+  font-size:16px;
   font-style:italic;
   font-weight:400;
   color:var(--muted)!important;
@@ -225,6 +225,7 @@
   opacity:1;
   margin:0;
   padding-top:1px;
+text-transform: lowercase;
 }
 
 #wombat .obo-panel .profile_field field{

@@ -104,17 +104,13 @@
 
 /* ── CORPS DE CARTE : masqué par défaut ── */
 .mn-card-body {
-  display: none;
+   display: flex;
   border-top: 1px solid var(--border);
   padding: 14px 18px;
   display: none;
   flex-direction: column;
   gap: 14px;
   background: var(--bg);
-}
-
-.mn-card.open .mn-card-body {
-  display: flex;
 }
 
 /* Description narrative */

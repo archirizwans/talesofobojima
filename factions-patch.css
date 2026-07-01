@@ -41,3 +41,31 @@
 .fc-footer{border-top:1px solid var(--border);padding:10px 32px;display:flex;justify-content:space-between;align-items:center}
 .fc-footer-sig{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:.3}
 .fc-badge{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:.8px;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:#526b5418;color:#3d5c3f;border:1px solid #526b5433}
+
+/* tags couleur */
+.fc-tag-red{background:#8a504015;border-color:#8a504040;color:#6b3020}
+.fc-tag-gold{background:#c9a86a15;border-color:#c9a86a40;color:#7a5a2a}
+
+/* tags rivalité */
+.fc-rivals{display:flex;flex-direction:column;gap:7px}
+
+.fc-rival{background:var(--neutral);border-radius:6px;overflow:hidden}
+
+.fc-rival-inner{display:grid;grid-template-columns:3px 1fr}
+
+.fc-rival-accent{background:#8a504070}
+.fc-rival-accent.fc-rival-ambigu{background:#c9a86a70}
+
+.fc-rival-content{padding:10px 14px}
+
+.fc-rival-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:3px}
+
+.fc-rival-name{font-family:'EB Garamond',serif;font-size:14px;font-style:italic;color:var(--textColor);opacity:.85}
+
+.fc-rival-type{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:.6px;text-transform:uppercase;padding:2px 8px;border-radius:3px;flex-shrink:0;white-space:nowrap}
+
+.fc-rival-desc{font-family:'Open Sans',sans-serif;font-size:11.5px;font-weight:300;color:var(--muted);line-height:1.65;word-break:break-word}
+
+/* og point mierda */
+.og-point-dot{margin-top:9px}
+.og-point-text{margin:0}

@@ -1,0 +1,46 @@
+/* conteneur */
+.fc-org-list{display:flex;flex-direction:column;gap:12px}
+
+/* carte */
+.fc-org{position:relative;background:var(--neutral);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.fc-org::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,#526b54,var(--accent-2))}
+
+/* en-tête : icône + identité + badge lieu */
+.fc-org-head{display:flex;align-items:center;gap:12px;padding:13px 16px 12px 19px;border-bottom:1px solid var(--border)}
+.fc-org-icon{width:38px;height:38px;border-radius:50%;background:#526b5422;border:1px solid #526b5440;display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:16px;color:var(--accent);flex-shrink:0}
+.fc-org-id{flex:1;min-width:0}
+.fc-org-name{font-family:'EB Garamond',serif;font-size:17px;font-weight:400;color:var(--textColor);opacity:.88;display:block;letter-spacing:.4px;line-height:1.1}
+.fc-org-sub{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);opacity:.6;margin-top:4px;display:block}
+.fc-org-place{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:.6px;text-transform:uppercase;padding:3px 9px;border-radius:3px;background:#526b5415;border:1px solid #526b5440;color:#3d5c3f;flex-shrink:0;white-space:nowrap}
+
+/* corps */
+.fc-org-body{padding:14px 16px 15px 19px;display:flex;flex-direction:column;gap:13px}
+
+/* band */
+.fc-org-meta{display:flex;flex-wrap:wrap;gap:6px}
+.fc-org-chip{display:inline-flex;align-items:baseline;gap:5px;font-family:'Open Sans',sans-serif;font-size:11px;font-weight:300;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:4px 10px}
+.fc-org-chip b{font-family:'Poppins',sans-serif;font-size:7px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);opacity:.75}
+
+/* champ */
+.fc-org-field-label{font-family:'Poppins',sans-serif;font-size:8px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);opacity:.7;display:block;margin-bottom:5px}
+.fc-org-field-text{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;color:var(--muted);line-height:1.75;margin:0;word-break:break-word}
+
+/* serment */
+.fc-org-oath{background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--accent-2);border-radius:0 6px 6px 0;padding:11px 15px}
+.fc-org-oath-label{font-family:'Poppins',sans-serif;font-size:8px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent-2);display:block;margin-bottom:6px}
+.fc-org-oath-text{font-family:'EB Garamond',serif;font-size:14px;font-style:italic;color:var(--textColor);opacity:.82;line-height:1.6;margin:0;position:relative}
+.fc-org-oath-text::before{content:'❝';color:var(--accent-2);opacity:.55;font-size:15px;margin-right:3px}
+.fc-org-oath-text::after{content:'❞';color:var(--accent-2);opacity:.55;font-size:15px;margin-left:2px}
+
+/* liste pouvoirs */
+.fc-org-powers{display:flex;flex-direction:column;gap:8px}
+.fc-org-power{display:flex;gap:10px;align-items:start}
+.fc-org-power-dot{width:4px;height:4px;border-radius:50%;background:#526b54;flex-shrink:0;margin-top:7px}
+.fc-org-power-text{font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;color:var(--muted);line-height:1.7;margin:0;word-break:break-word}
+.fc-org-power-text b{font-family:'EB Garamond',serif;font-size:13px;font-style:italic;font-weight:400;color:var(--textColor);opacity:.85}
+
+/* responsive : badge lieu passe sous le nom sur mobile */
+@media(max-width:420px){
+  .fc-org-head{flex-wrap:wrap}
+  .fc-org-place{margin-left:50px}
+}
